@@ -1,0 +1,11 @@
+/* Import Lato font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+/* Apply Lato font to body */
+body {
+  font-family: 'Lato', sans-serif; /* Set default font */
+}
+body {
+    background-color: rgb(10, 8, 31); /* Black background for the body */
+    color: white; /* White text for better contrast */
+  }

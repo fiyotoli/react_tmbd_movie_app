@@ -1,0 +1,14 @@
+* {
+    margin: 0;                /* Remove default margin */
+    padding: 0;               /* Remove default padding */
+    box-sizing: border-box;   /* Include padding and border in total width and height */
+}
+
+/* Ensure html and body fill the viewport */
+html, body {
+    min-width: 100%;             /* Set width to 100% of the viewport */
+    min-height: 100%;             /* Set height to 100% of the viewport */
+    overflow-x: hidden;       /* Prevent horizontal scrolling */
+         /* Allow vertical scrolling if necessary */
+}
+

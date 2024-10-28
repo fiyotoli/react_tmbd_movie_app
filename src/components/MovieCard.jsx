@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
   // Inline styles for the card
   const cardStyle = {
     height: '400px', // Fixed height for the card
-    backgroundColor: 'black',
+    backgroundColor: 'rgb(10, 8, 31)',
     color: 'white',
   };
 
@@ -29,12 +29,12 @@ const MovieCard = ({ movie }) => {
   };
 
   return (
-    <Card className="mb-4" style={cardStyle}>
+    <Card className="mb-4 shadow" style={cardStyle}>
       <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} style={imgStyle} />
       <Card.Body style={bodyStyle}>
         <div className="d-flex justify-content-between align-items-center flex-grow-1">
           <Card.Title className="text-white">{movie.title}</Card.Title>
-          <span className="bg-success text-white rounded px-2">{new Date(movie.release_date).getFullYear()}</span>
+          <span className="bg-success text-white rounded px-2 ms-2">{new Date(movie.release_date).getFullYear()}</span>
         </div>
         <div className="d-flex align-items-center my-2">
           {/* Render filled stars */}

@@ -1,61 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaFilm } from 'react-icons/fa';  // Import the movie icon
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Navbar.css';  // CSS file for custom styles
+import React from 'react';
+import { MdMovie } from 'react-icons/md'; // Import the camera reel icon
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+const NavBar = ({ onSearch }) => {
+  const handleSearch = (event) => {
+    const value = event.target.value;
+    onSearch(value); // Call the function passed from Home
+  };
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-dark bg-dark fixed-top ${scrolled ? 'shadow' : ''}`}>
-      <div className="container py-2">
-        {/* Logo */}
-        <Link className="navbar-brand" to="/">
-          <FaFilm className="text-danger" size={30} /> {/* Movie icon */}
-          MyBrand
-        </Link>
+    <nav className="navbar navbar-light bg-light fixed-top shadow py-2" style={{ padding: '0 20px' }}>
+      {/* Use Link for the logo to connect to home */}
+      <Link className="navbar-brand d-flex align-items-center fs-3 fw-bold" to="/">
+        <MdMovie className="text-danger me-2" style={{ fontSize: '34px' }} />
+        Movie <span className='text-success text-danger'>Home</span>
+      </Link>
+      
+      {/* Toggle button only visible on small screens */}
+      <button 
+        className="navbar-toggler d-sm-none" // Show only on small screens
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarContent" 
+        aria-controls="navbarContent" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+      {/* Search input always visible on medium and large screens */}
+      <div className="ms-auto col-10 col-md-4 d-none d-md-block"> 
+        <form className="d-flex align-items-center">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="form-control shadow-inner border border-success rounded" // Add border and rounded styles
+            onChange={handleSearch}
+          />
+        </form>
+      </div>
 
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            {/* Login Button */}
-            <li className="nav-item">
-              <Link className="btn btn-danger" to="/login">
-                Login
-              </Link>
-            </li>
-          </ul>
+      {/* Collapsible content for small screens */}
+      <div className="collapse navbar-collapse d-sm-block d-md-none" id="navbarContent">
+        <div className="ms-auto col-10"> {/* Align search input to the right */}
+          <form className="d-flex align-items-center">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="form-control shadow-inner border border-success rounded" // Add border and rounded styles
+              onChange={handleSearch}
+            />
+          </form>
         </div>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default NavBar;

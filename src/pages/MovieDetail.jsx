@@ -30,11 +30,11 @@ const MovieDetail = () => {
   return (
     <Container className='mt-5 pt-5'>
       <Row>
-        <Col md={6}>
+        <Col md={6} className='mb-3'>
           <Image src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} fluid />
         </Col>
         <Col md={6}>
-          <h2 className='text-success '>{movie.title}</h2>
+          <h2 className='text '>{movie.title}</h2>
           <p>
             <strong></strong>
             {/* Map through genres and display them as badges */}
@@ -44,10 +44,10 @@ const MovieDetail = () => {
               </Badge>
             ))}
           </p>
-          <p className="lead">
-            <strong>Description:</strong> {movie.overview}
+          <p className="" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+            <strong className='text-white'>Description:</strong> {movie.overview}
           </p>
-          <h4 className='text-success'>Cast:</h4>
+          <h4 className='lead'>Cast:</h4>
           <Row>
             {cast.slice(0, 6).map(actor => (
               <Col key={actor.cast_id} xs={4}>

@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 
 const GenreFilter = ({ setSelectedGenre }) => {
   const [genres, setGenres] = useState([]);
+  const [activeGenre, setActiveGenre] = useState('all'); // State to track the active genre
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
@@ -24,26 +25,29 @@ const GenreFilter = ({ setSelectedGenre }) => {
     transition: 'background-color 0.3s ease', // Smooth transition for hover effect
   };
 
-  const hoverStyle = {
-    backgroundColor: '#28a745', // Success color on hover
-    color: 'white', // Keep text color white on hover
+  const activeButtonStyle = {
+    backgroundColor: '#28a745', // Success color for active buttons
+    color: 'white', // Keep text color white on active
+  };
+
+  const handleGenreClick = (genreId) => {
+    setSelectedGenre(genreId);
+    setActiveGenre(genreId); // Set the clicked genre as active
   };
 
   return (
     <div className="mb-3 container">
       <Button
-        style={{ ...buttonStyle, backgroundColor: '#28a745' }} // Success color for "All" button
-        onClick={() => setSelectedGenre('all')}
+        style={{ ...buttonStyle, ...(activeGenre === 'all' ? activeButtonStyle : {}) }} // Apply active style if "All" is selected
+        onClick={() => handleGenreClick('all')}
       >
         All
       </Button>
       {genres.map(genre => (
         <Button
           key={genre.id}
-          onClick={() => setSelectedGenre(genre.id)}
-          style={buttonStyle}
-          onMouseOver={(e) => e.currentTarget.style.backgroundColor = hoverStyle.backgroundColor} // Change background on hover
-          onMouseOut={(e) => e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor} // Reset background when not hovering
+          onClick={() => handleGenreClick(genre.id)}
+          style={{ ...buttonStyle, ...(activeGenre === genre.id ? activeButtonStyle : {}) }} // Apply active style if this genre is selected
         >
           {genre.name}
         </Button>

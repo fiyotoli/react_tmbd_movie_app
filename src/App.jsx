@@ -7,24 +7,28 @@ import NoPage from './pages/NoPage';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState(''); // State to hold search query
 
   useEffect(() => {
-    // Simulating a loading period (e.g., fetching data)
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // Adjust the time as needed
+    }, 2000);
 
-    return () => clearTimeout(timer); // Cleanup on unmount
+    return () => clearTimeout(timer);
   }, []);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query); // Update the search query state
+  };
 
   return (
     <Router>
-      <Navbar />
+      <Navbar onSearch={handleSearch} /> {/* Pass the onSearch function to Navbar */}
 
       {loading ? (
         <div
           className="d-flex justify-content-center align-items-center"
-          style={{ height: '100vh' }} // Full viewport height to vertically center the spinner
+          style={{ height: '100vh' }}
         >
           {/* Loading Spinner */}
           <button className="btn btn-success me-2" type="button" disabled>
@@ -38,7 +42,7 @@ const App = () => {
         </div>
       ) : (
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home searchQuery={searchQuery} />} />
           <Route path="/movie/:id" element={<MovieDetail />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
