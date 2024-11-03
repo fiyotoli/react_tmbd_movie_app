@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
 import Navbar from './components/Navbar/Navbar';
-import NoPage from './pages/NoPage';
+import NoPage from './pages/NoPage/NoPage';
+
 
 const App = () => {
   const [loading, setLoading] = useState(true);

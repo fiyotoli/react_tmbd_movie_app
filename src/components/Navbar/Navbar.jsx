@@ -48,7 +48,7 @@ const NavBar = ({ onSearch }) => {
             <input
               type="text"
               placeholder="Search..."
-              className="form-control shadow-inner border border-success rounded" // Add border and rounded styles
+              className="form-control shadow-inner border border-success rounded mt-3" // Add margin-top for the collapsed state
               onChange={handleSearch}
             />
           </form>

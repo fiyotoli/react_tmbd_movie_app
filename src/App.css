@@ -11,4 +11,8 @@ html, body {
     overflow-x: hidden;       /* Prevent horizontal scrolling */
          /* Allow vertical scrolling if necessary */
 }
+body {
+    background-color: rgb(0, 0, 0); /* Black background for the body */
+    color: white; /* White text for better contrast */
+  }
 
