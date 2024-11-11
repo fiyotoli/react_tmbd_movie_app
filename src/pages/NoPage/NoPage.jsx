@@ -6,7 +6,7 @@ import yourImage from '../../assets/404.jpg'; // Import your image
 const NoPage = () => {
     return (
         <div style={{ backgroundColor: 'white', minHeight: '100vh' }} className="d-flex align-items-center justify-content-center">
-            <div className="row pt-3 w-100 align-items-center justify-content-center mt-5">
+            <div className="row w-100 align-items-center justify-content-center mt-5">
                 <div className="col-md-6 text-center mb-3">
                     <img
                         src={yourImage}

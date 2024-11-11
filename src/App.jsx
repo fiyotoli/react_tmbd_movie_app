@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -23,7 +23,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <Router  basename="/react_tmbd_movie_app">
       <Navbar onSearch={handleSearch} /> {/* Pass the onSearch function to Navbar */}
 
       {loading ? (
