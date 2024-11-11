@@ -23,7 +23,7 @@ const App = () => {
   };
 
   return (
-    <Router  basename="/react_tmbd_movie_app">
+    <Router basename="/react_tmbd_movie_app">
       <Navbar onSearch={handleSearch} /> {/* Pass the onSearch function to Navbar */}
 
       {loading ? (
